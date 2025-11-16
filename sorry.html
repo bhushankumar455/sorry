@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Unforgettable Apology</title>
+
+    <style>
+        /* CSS Styling */
+        :root {
+            --heart-color: #ff3366;
+            --container-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            background: linear-gradient(135deg, #e6e6fa, #f0e68c); /* Lavender to Khaki */
+            font-family: 'Times New Roman', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars due to heart rain */
+        }
+
+        .apology-container {
+            background-color: var(--container-bg);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            max-width: 650px;
+            text-align: center;
+            border: 5px solid var(--heart-color);
+            position: relative; /* For z-index and positioning */
+            z-index: 10;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #4b0082; /* Indigo */
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Typing Animation Setup */
+        .typing-message {
+            color: #2f4f4f; /* Dark Slate Gray */
+            font-size: 1.3em;
+            line-height: 1.8;
+            height: 7.2em; /* Ensure container doesn't jump */
+            overflow: hidden;
+            border-right: .15em solid orange; /* The cursor */
+            white-space: pre-wrap;
+            margin: 30px 0;
+            padding-right: 5px;
+            text-align: left;
+        }
+        
+        .signature {
+            color: #555;
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.2em;
+        }
+
+        .heart-icon {
+            font-size: 4em;
+            margin-top: 20px;
+            color: var(--heart-color);
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Button Styling */
+        #revealButton {
+            background-color: var(--heart-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 25px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #revealButton:hover {
+            background-color: #e02b55;
+            transform: translateY(-2px) scale(1.05);
+        }
+        
+        #extraMessage {
+            color: #8b0000; /* Dark Red */
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px dashed var(--heart-color);
+            border-radius: 10px;
+            transition: all 0.5s ease-in-out;
+            font-style: italic;
+        }
+
+        /* Keyframes for animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Heart Rain Effect */
+        .heart {
+            position: absolute;
+            top: -10vh;
+            color: var(--heart-color);
+            opacity: 0.8;
+            font-size: 1.5em;
+            z-index: 5;
+            animation: fall linear infinite;
+        }
+
+        /* Animation for the falling hearts */
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) translateX(5vw);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="apology-container">
+        <h1>My Beloved SAISHA</h1>
+        
+        <div class="typing-message" id="apologyText">
+            </div>
+
+        <p class="signature">- Always and forever, BHARAT</p>
+        
+        <button id="revealButton">Click for a promise I intend to keep</button>
+        <p id="extraMessage" style="display: none;">
+            This wasn't just a mistake, it was a profound learning experience. 
+            My love, I am so incredibly sorry for the horrible things I said. 
+            My words were inexcusable and completely out of line. I hurt you, and it kills me. 
+            Please know my apology is sincere, and I truly regret causing you any pain
+        </p>
+
+        <div class="heart-icon">❤️</div>
+    </div>
+    
+    <div style="position: fixed; bottom: 10px; right: 10px; z-index: 20; color: #6a5acd; font-size: 0.9em;">
+        *Suggestion: Play 'A Thousand Years' or 'Perfect' for maximum effect.*
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Typing Animation ---
+            const typingElement = document.getElementById('apologyText');
+            // USE EMOJIS HERE for extra visual appeal! 
+            const textToType = `
+                I am reaching out to you with the heaviest heart I have ever known. 
+                I deeply regret [**BE SPECIFIC about the action/mistake**]. 
+                There is absolutely no excuse for the pain I have caused you, and knowing 
+                I made you feel that way is truly unbearable. 
+                
+                You are my sunshine ☀️, my rock, and the most incredible person I know. 
+                Please know that my love for you is not conditional, and my apology is 
+                unreserved. I hope you can find it in your heart to forgive me. 😔
+            `;
+            let i = 0;
+            const speed = 40; // Typing speed (milliseconds)
+
+            function typeWriter() {
+                if (i < textToType.length) {
+                    typingElement.innerHTML += textToType.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    // Stop the blinking cursor after text is fully typed
+                    typingElement.style.borderRight = 'none';
+                }
+            }
+            
+            // Start the typing animation
+            typeWriter();
+
+            // --- 2. Reveal Button ---
+            const button = document.getElementById('revealButton');
+            const message = document.getElementById('extraMessage');
+
+            button.addEventListener('click', function() {
+                if (message.style.display === 'none') {
+                    message.style.display = 'block';
+                    button.textContent = "Thank you for listening.";
+                    // Scroll to make sure the message is visible
+                    window.setTimeout(() => message.scrollIntoView({ behavior: 'smooth' }), 500);
+                } else {
+                    message.style.display = 'none';
+                    button.textContent = "Click for a promise I intend to keep";
+                }
+            });
+
+            // --- 3. Heart Rain ---
+            const heartRain = () => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💖'; 
+                
+                // Random position and size
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 1.5 + 1 + 'em';
+                
+                // Random animation duration and delay for staggered look
+                const duration = Math.random() * 8 + 6; // 6 to 14 seconds
+                heart.style.animationDuration = duration + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's'; 
+                
+                document.body.appendChild(heart);
+
+                // Remove hearts after they fall off screen
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000); 
+            };
+
+            // Generate a continuous rain of hearts
+            setInterval(heartRain, 300); // Create a new heart every 300ms
+        });
+    </script>
+</body>
+</html>
